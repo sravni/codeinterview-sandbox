@@ -1,0 +1,86 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/execute": {
+      "post": {
+        "operationId": "execute",
+        "summary": "Выполнить код",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExecuteCodeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExecuteCodeResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["sandbox"]
+      }
+    }
+  },
+  "info": {
+    "title": "Code interview sandbox service",
+    "description": "Code interview sandbox service API description",
+    "version": "1.0",
+    "contact": {}
+  },
+  "servers": [],
+  "components": {
+    "schemas": {
+      "ExecuteCodeDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "javascript",
+              "typescript",
+              "go",
+              "csharp"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "language"
+        ]
+      },
+      "ExecuteCodeResponseDto": {
+        "type": "object",
+        "properties": {
+          "output": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "output",
+          "error",
+          "duration"
+        ]
+      }
+    }
+  }
+}
