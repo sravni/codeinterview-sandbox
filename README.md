@@ -35,7 +35,3 @@ This service is responsible for execute user code.
    `docker build -t codeinterview-sandbox .`
 2. Run docker image with enviroment variables from `.env`
    `docker run --env-file ./.env codeinterview-sandbox`
-
-## Community
-
-- Contributing to Codeinterview - Start here if you want to contribute
