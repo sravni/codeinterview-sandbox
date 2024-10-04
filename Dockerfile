@@ -1,4 +1,4 @@
-FROM alpine:latest as base
+FROM alpine:latest AS base
 
 FROM base AS compilers
 # For JavaScript
@@ -8,12 +8,10 @@ RUN npm install -g ts-node typescript
 # For Go
 RUN wget https://golang.org/dl/go1.22.6.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.22.6.linux-amd64.tar.gz
-ENV PATH "$PATH:/usr/local/go/bin"
+ENV PATH="$PATH:/usr/local/go/bin"
 # For Csharp
-RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
-    apk add --no-cache --virtual=.build-dependencies ca-certificates && \
-    cert-sync /etc/ssl/certs/ca-certificates.crt && \
-    apk del .build-dependencies
+RUN apk add dotnet8-sdk 
+RUN apk add dotnet8-runtime
 
 FROM compilers AS release
 WORKDIR /app
@@ -27,5 +25,9 @@ RUN adduser -D codeinterview
 RUN chown -R codeinterview /app
 
 USER codeinterview
+
+#For suppress dotnet welcome message (instead DOTNET_SKIP_FIRST_TIME_EXPERIENCE)
+#https://github.com/dotnet/sdk/issues/3828#issuecomment-557768792
+RUN mkdir "$HOME"/.dotnet && touch "$HOME"/.dotnet/"$(dotnet --version)".dotnetFirstUseSentinel
 
 CMD npm run start
