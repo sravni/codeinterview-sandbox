@@ -12,6 +12,8 @@ ENV PATH="$PATH:/usr/local/go/bin"
 # For Csharp
 RUN apk add dotnet8-sdk 
 RUN apk add dotnet8-runtime
+# For Python
+RUN apk add --no-cache python3
 
 FROM compilers AS release
 WORKDIR /app
