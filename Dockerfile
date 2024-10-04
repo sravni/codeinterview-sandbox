@@ -18,7 +18,7 @@ WORKDIR /app
 EXPOSE 3003
 
 COPY . .
-COPY package.json package-lock.json ./
+COPY package.json yarn.lock ./
 RUN npm install
 
 RUN adduser -D codeinterview
