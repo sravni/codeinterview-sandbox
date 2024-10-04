@@ -19,7 +19,7 @@ const LANGUAGE_EXECUTE_PARAMETERS = {
     executeString: 'go run code.go',
     fileName: 'code.go'
   },
-  [LANGUAGES.CSHARP]: {  
+  [LANGUAGES.CSHARP]: {
     executeString: 'cp ../../Csharp.csproj CsharpProject.csproj && dotnet run --nologo',
     fileName: 'Program.cs'
   },
