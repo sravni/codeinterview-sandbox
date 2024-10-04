@@ -3,7 +3,7 @@ const LANGUAGES = {
   TYPESCRIPT: 'typescript',
   GO: 'go',
   CSHARP: 'csharp',
-//   SWIFT: 'swift'
+  PYTHON: 'python'
 }
 
 const LANGUAGE_EXECUTE_PARAMETERS = {
@@ -23,7 +23,10 @@ const LANGUAGE_EXECUTE_PARAMETERS = {
     executeString: 'cp ../../Csharp.csproj CsharpProject.csproj && dotnet run --nologo',
     fileName: 'Program.cs'
   },
-//   [LANGUAGES.SWIFT]: ['swift', 'file.swift', ''],
+  [LANGUAGES.PYTHON]: {  
+    executeString: 'python code.py',
+    fileName: 'code.py'
+  }
 }
 
 module.exports.LANGUAGES = LANGUAGES

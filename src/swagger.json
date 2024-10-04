@@ -53,7 +53,8 @@
               "javascript",
               "typescript",
               "go",
-              "csharp"
+              "csharp",
+              "python"
             ]
           }
         },
